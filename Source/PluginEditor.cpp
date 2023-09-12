@@ -6,10 +6,14 @@ PluginEditor::PluginEditor (PluginProcessor& p)
     , message("Workgroup not yet changed")
 {
     setSize(500, 200);
+    
+    audioProcessor.addChangeListener(this);
+    changeListenerCallback(nullptr);
 }
 
 PluginEditor::~PluginEditor()
 {
+    audioProcessor.removeChangeListener(this);
 }
 
 void PluginEditor::paint(Graphics& g)
